@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Insulin
 
 
 insulin = [
@@ -24,7 +25,7 @@ insulin = [
 
 def home(request):
     context = {
-        'insulin': insulin
+        'insulin': Insulin.objects.all()python manage.py runserver
     }
     return render(request, 'dash/home.html', context)
 
