@@ -25,8 +25,8 @@ insulin = [
 
 def home(request):
     context = {
-        'insulin': Insulin.objects.all()python manage.py runserver
-    }
+        'insulin': Insulin.objects.all()
+    }   
     return render(request, 'dash/home.html', context)
 
 def detail(request):
