@@ -1,0 +1,46 @@
+{% extends "dash/base.html" %}
+{% block content %}
+    <h1>Dashboard</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="bg-primary text-white p-3 rounded">
+                <h2>Insulin</h2>
+                {% with latest_insulin=insulin|dictsortreversed:"date_administered"|dictsortreversed:"time_administered"|first %}
+                <p>{{ latest_insulin.dose }} units of {{ latest_insulin.type }}</p>
+                <p>Note: {{ latest_insulin.note }}</p>
+                <p>Date: {{ latest_insulin.date_administered }}</p>
+                <p>Time: {{ latest_insulin.time_administered }}</p>
+                {% endwith %}
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="bg-success text-white p-3 rounded">
+                Content 2
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="bg-warning text-white p-3 rounded">
+                Content 3
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="bg-danger text-white p-3 rounded">
+                Content 4
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="bg-info text-white p-3 rounded">
+                Content 5
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="bg-secondary text-white p-3 rounded">
+                Content 6
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
