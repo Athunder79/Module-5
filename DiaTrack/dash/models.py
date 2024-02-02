@@ -10,8 +10,8 @@ class Insulin(models.Model):
     note = models.TextField()
     date_administered = models.DateTimeField(default=timezone.now)
     time_administered = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-	    return self.dose
+	    return self.type
 
