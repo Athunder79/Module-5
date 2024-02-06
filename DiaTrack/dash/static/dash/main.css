@@ -1,0 +1,9 @@
+.logout-button {
+    background: black;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: blue; 
+    text-decoration: underline; 
+  }
