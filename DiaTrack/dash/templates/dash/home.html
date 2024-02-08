@@ -42,7 +42,7 @@
                 <h2>Food</h2>
                 {% with latest_meal=meal|dictsortreversed:"date"|dictsortreversed:"time"|first %}
                 <p>Meal: {{ latest_meal.meal }}</p>
-                <p>Total Carbs: {{ latest_meal.total_card_intake }}g</p>
+                <p>Total Carbs: {{ latest_meal.total_carb_intake }}g</p>
                 <p>Date: {{ latest_meal.date }}</p>
                 <p>Time: {{ latest_meal.time }}</p>
                 {% endwith %}
@@ -56,12 +56,10 @@
         <div class="col-md-4 mb-4">
             <div class="bg-secondary text-white p-3 rounded">
                 <h2>Reminders</h2>
-                
                 {% for last_reminder in reminder|dictsort:"date_due"|slice:":3" %}
                 <p>Reminder: {{ last_reminder.reminder }}<br>
                 Due Date: {{ last_reminder.date_due }}</p>
                 {% endfor %}
-                
             </div>
         </div>
     </div>

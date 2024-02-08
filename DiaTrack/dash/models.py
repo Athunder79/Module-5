@@ -51,7 +51,7 @@ class InsulinChanged(models.Model):
 class Meal(models.Model):
     id = models.AutoField(primary_key=True)
     meal = models.TextField()
-    total_card_intake = models.DecimalField(max_digits=3, decimal_places=1)
+    total_carb_intake = models.DecimalField(max_digits=3, decimal_places=1)
     note = models.TextField(null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
     time = models.DateTimeField(default=timezone.now)

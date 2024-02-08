@@ -39,5 +39,39 @@ class InsulinCreateView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class GlucoseCreateView(CreateView):
+    model = Glucose
+    fields = ['reading', 'note', 'date_taken', 'time_taken']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class InsulinChangedCreateView(CreateView):
+    model = InsulinChanged
+    fields = ['insulin_type', 'date_changed', 'time_changed']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class MealCreateView(CreateView):  
+    model = Meal    
+    fields = ['meal', 'total_carb_intake', 'note', 'date', 'time']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class ReminderCreateView(CreateView):
+    model = Reminder
+    fields = ['reminder', 'date', 'date_due']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+   
+
 
    
