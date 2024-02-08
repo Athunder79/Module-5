@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-b_pb#a940m+t+_gw^ih=m-**5&q_*ex0j+@+vz(^h!eij(d3xy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('RENDER_HOSTNAME', 'diatrack.onrender.com')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('RENDER_HOSTNAME', '')]
 
 
 # Application definition
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DiaTrack.wsgi.application'
+WSGI_APPLICATION = 'diatrack.wsgi.application'
 
 
 # Database
