@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DiaTrack.urls'
+ROOT_URLCONF = 'diatrack.urls'
 
 TEMPLATES = [
     {
