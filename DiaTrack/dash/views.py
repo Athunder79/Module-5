@@ -20,13 +20,13 @@ class DashListView(ListView):
     context_object_name = 'data_list'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['insulin'] = Insulin.objects.filter(user=self.request.user)
-        context['glucose'] = Glucose.objects.filter(user=self.request.user)
-        context['insulin_changed'] = InsulinChanged.objects.filter(user=self.request.user)
-        context['meal'] = Meal.objects.filter(user=self.request.user)
-        context['reminder'] = Reminder.objects.filter(user=self.request.user)
+        context['insulin'] = Insulin.objects.all()
+        context['glucose'] = Glucose.objects.all()
+        context['insulin_changed'] = InsulinChanged.objects.all()
+        context['meal'] = Meal.objects.all()
+        context['reminder'] = Reminder.objects.all()
         return context
-
+        
     def get_queryset(self):
         # Override the get_queryset method 
         return Insulin.objects.none()

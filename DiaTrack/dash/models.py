@@ -14,7 +14,7 @@ class Insulin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-	    return self.type
+	    return self.insulin_type
 
     def get_absolute_url(self): 
         return reverse('dash-home')
