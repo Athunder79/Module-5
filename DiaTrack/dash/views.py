@@ -14,7 +14,7 @@ def home(request):
 def detail(request):
     return HttpResponse('<h1>detail</h1>')
 
-class DashListView(LoginRequiredMixin, ListView):
+class DashListView(ListView):
     
     template_name = 'dash/home.html'
     context_object_name = 'data_list'

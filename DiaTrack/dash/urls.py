@@ -1,6 +1,12 @@
 from django.urls import path
+from .views import (
+    DashListView, 
+    InsulinCreateView, 
+    GlucoseCreateView, 
+    InsulinChangedCreateView, 
+    MealCreateView, 
+    ReminderCreateView
 from . import views
-from .views import DashListView, InsulinCreateView, GlucoseCreateView, InsulinChangedCreateView, MealCreateView, ReminderCreateView
 
 urlpatterns = [
     path('', DashListView.as_view(), name='dash-home'),
