@@ -1,5 +1,5 @@
 """
-WSGI config for DiaTrack project.
+WSGI config for diatrack project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

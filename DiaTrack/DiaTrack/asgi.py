@@ -1,5 +1,5 @@
 """
-ASGI config for DiaTrack project.
+ASGI config for diatrack project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
