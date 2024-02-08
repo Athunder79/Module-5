@@ -6,6 +6,7 @@ from .views import (
     InsulinChangedCreateView, 
     MealCreateView, 
     ReminderCreateView
+)
 from . import views
 
 urlpatterns = [
