@@ -10,7 +10,6 @@ class Insulin(models.Model):
     insulin_type = models.TextField()
     note = models.TextField(null=True, blank=True)
     date_administered = models.DateTimeField(default=timezone.now)
-    time_administered = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -24,7 +23,6 @@ class Glucose(models.Model):
     reading = models.DecimalField(max_digits=3, decimal_places=1)
     note = models.TextField(null=True, blank=True)
     date_taken = models.DateTimeField(default=timezone.now)
-    time_taken = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -38,7 +36,6 @@ class InsulinChanged(models.Model):
     id = models.AutoField(primary_key=True)
     insulin_type = models.TextField()
     date_changed = models.DateTimeField(default=timezone.now)
-    time_changed = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -54,7 +51,6 @@ class Meal(models.Model):
     total_carb_intake = models.DecimalField(max_digits=3, decimal_places=1)
     note = models.TextField(null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
-    time = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -82,9 +78,8 @@ class Reminder(models.Model):
 class Cgm(models.Model):
     id = models.AutoField(primary_key=True)
     sensor = models.TextField(null=True, blank=True)
-    sensor_life = models.IntegerField(null=False, blank=True)
+    sensor_life_in_days = models.IntegerField(null=False, blank=True)
     date_changed = models.DateTimeField(default=timezone.now)
-    time_changed = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

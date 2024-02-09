@@ -1,39 +1,38 @@
 {% extends "dash/base.html" %}
 {% block content %}
-<h1>Dashboard</h1>
+<h1>Dashboard Last Logged</h1>
 {% if user.is_authenticated %}
-    <h2>Welcome, {{ user.username }}</h2>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 mb-4">
             <div class="bg-primary text-white p-3 rounded">
                 <h2>Insulin</h2>
-                {% with latest_insulin=insulin|dictsortreversed:"date_administered"|dictsortreversed:"time_administered"|first %}
-                <p>{{ latest_insulin.dose }} units of {{ latest_insulin.insulin_type }}</p>
-                <p>Note: {{ latest_insulin.note }}</p>
-                <p>Date: {{ latest_insulin.date_administered }}</p>
-                <p>Time: {{ latest_insulin.time_administered }}</p>
+                {% with latest_insulin=insulin|dictsortreversed:"date_administered"|first %}
+                <p><strong>Dose:</strong>&nbsp; {{ latest_insulin.dose }} units of {{ latest_insulin.insulin_type }}</p>
+                <p><strong>Note:</strong>&nbsp; {{ latest_insulin.note }}</p>
+                <p><strong>Date:</strong>&nbsp; {{ latest_insulin.date_administered|date:'d-M-Y' }}</p>
+                <p><strong>Time:</strong>&nbsp; {{ latest_insulin.date_administered|date:'H:i' }}</p>
                 {% endwith %}
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="bg-success text-white p-3 rounded">
                 <h2>Glucose Reading</h2>
-                {% with latest_glucose=glucose|dictsortreversed:"date_taken"|dictsortreversed:"time_taken"|first %}
-                <p>{{ latest_glucose.reading }} mg/dL</p>
-                <p>Note: {{ latest_glucose.note }}</p>
-                <p>Date: {{ latest_glucose.date_taken }}</p>
-                <p>Time: {{ latest_glucose.time_taken }}</p>
+                {% with latest_glucose=glucose|dictsortreversed:"date_taken"|first %}
+                <p><strong>Reading:</strong>&nbsp; {{ latest_glucose.reading }} mmol/L</p>
+                <p><strong>Note:</strong>&nbsp; {{ latest_glucose.note }}</p>
+                <p><strong>Date:</strong>&nbsp; {{ latest_glucose.date_taken|date:'d-M-Y' }}</p>
+                <p><strong>Time:</strong>&nbsp; {{ latest_glucose.date_taken|date:'H:i' }}</p>
                 {% endwith %}
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="bg-warning text-white p-3 rounded">
-                <h2>Insulin Changes</h2>
-                {% with latest_insulin_changed=insulin_changed|dictsortreversed:"date_changed"|dictsortreversed:"time_changed"|first %}
-                <p>Insulin Type:  {{ latest_insulin_changed.insulin_type }}</p>
+                <h2>Insulin Change</h2>
+                {% with latest_insulin_changed=insulin_changed|dictsortreversed:"date_changed"|first %}
+                <p><strong>Insulin Type:</strong>&nbsp;  {{ latest_insulin_changed.insulin_type }}</p>
                 <p>-</p>
-                <p>Date changed: {{ latest_insulin_changed.date_changed }}</p>
+                <p><strong>Date changed:</strong>&nbsp; {{ latest_insulin_changed.date_changed|date:'d-M-Y' }}</p>
                 <p>-</p>
                 {% endwith %}
             </div>
@@ -41,11 +40,11 @@
         <div class="col-md-4 mb-4">
             <div class="bg-danger text-white p-3 rounded">
                 <h2>Food</h2>
-                {% with latest_meal=meal|dictsortreversed:"date"|dictsortreversed:"time"|first %}
-                <p>Meal: {{ latest_meal.meal }}</p>
-                <p>Total Carbs: {{ latest_meal.total_carb_intake }}g</p>
-                <p>Date: {{ latest_meal.date }}</p>
-                <p>Time: {{ latest_meal.time }}</p>
+                {% with latest_meal=meal|dictsortreversed:"date"|first %}
+                <p><strong>Meal:</strong>&nbsp; {{ latest_meal.meal }}</p>
+                <p><strong>Total Carbs:</strong>&nbsp; {{ latest_meal.total_carb_intake }}g</p>
+                <p><strong>Date:</strong>&nbsp; {{ latest_meal.date|date:'d-M-Y' }}</p>
+                <p><strong>Time:</strong>&nbsp; {{ latest_meal.date|date:'H:i' }}</p>
                 {% endwith %}
             </div>
         </div>
@@ -53,10 +52,10 @@
             <div class="bg-info text-white p-3 rounded">
                 <h2>CGM Sensor Change</h2>
                 {% with latest_cgm=cgm|dictsortreversed:"date_changed"|first %}
-                <p>Sensor Type: {{ latest_cgm.sensor }}</p>
+                <p><strong>Sensor Type:</strong>&nbsp; {{ latest_cgm.sensor }}</p>
                 <p>-</p>
-                <p>Date Changed: {{ latest_cgm.date_changed }}</p>
-                <p>Time Changed: {{ latest_cgm.time_changed }}</p>
+                <p><strong>Date Changed:</strong>&nbsp; {{ latest_cgm.date_changed|date:'d-M-Y' }}</p>
+                <p><strong>Time Changed:</strong>&nbsp; {{ latest_cgm.date_changed|date:'H:i' }}</p>
                 {% endwith %}
             </div>
         </div>
@@ -64,8 +63,8 @@
             <div class="bg-secondary text-white p-3 rounded">
                 <h2>Reminders</h2>
                 {% for last_reminder in reminder|dictsort:"date_due"|slice:":3" %}
-                <p>Reminder: {{ last_reminder.reminder }}<br>
-                Due Date: {{ last_reminder.date_due }}</p>
+                <p><strong>Reminder:</strong>&nbsp; {{ last_reminder.reminder }}<br>
+                <strong>Due Date:</strong>&nbsp; {{ last_reminder.date_due|date:'d-M-Y' }}</p>
                 {% endfor %}
             </div>
         </div>

@@ -54,7 +54,7 @@ class DashHomeView(DashListView):
 
 class InsulinCreateView(CreateView):
     model = Insulin
-    fields = ['dose', 'insulin_type', 'note', 'date_administered', 'time_administered']
+    fields = ['dose', 'insulin_type', 'note', 'date_administered',]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -62,7 +62,7 @@ class InsulinCreateView(CreateView):
 
 class GlucoseCreateView(CreateView):
     model = Glucose
-    fields = ['reading', 'note', 'date_taken', 'time_taken']
+    fields = ['reading', 'note', 'date_taken',]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -70,7 +70,7 @@ class GlucoseCreateView(CreateView):
 
 class InsulinChangedCreateView(CreateView):
     model = InsulinChanged
-    fields = ['insulin_type', 'date_changed', 'time_changed']
+    fields = ['insulin_type', 'date_changed']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -78,7 +78,7 @@ class InsulinChangedCreateView(CreateView):
 
 class MealCreateView(CreateView):  
     model = Meal    
-    fields = ['meal', 'total_carb_intake', 'note', 'date', 'time']
+    fields = ['meal', 'total_carb_intake', 'note', 'date']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -94,7 +94,7 @@ class ReminderCreateView(CreateView):
     
 class CgmCreateView(CreateView):
     model = Cgm
-    fields = ['sensor', 'sensor_life','date_changed',]
+    fields = ['sensor', 'sensor_life_in_days','date_changed']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

@@ -1,6 +1,17 @@
 {% extends "dash/base.html" %}
 {% load crispy_forms_tags %} 
 {% block content %}
+
+    <div class="content-section">
+        <h1>Welcome to DiaTrack</h1>
+        <p>Managing Type 1 Diabetes involves a myriad of daily tasks and events, 
+           from insulin dosages to glucose readings, meals, and reminders. 
+           Keeping track of these events is not just essential but can also be overwhelming. 
+           Enter DiaTrack – your comprehensive solution for logging and tracking all your Type 1 Diabetes-related events seamlessly.</p>
+        <p>With DiaTrack, you can log and track your insulin dosages, glucose readings, meals, insulin changes, CGM sensor changes, and reminders. 
+           You can also view your history and get a snapshot of your last logged events on the dashboard.</p>
+        <p>Get started by logging in or creating an account.</p>
+    </div>
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
