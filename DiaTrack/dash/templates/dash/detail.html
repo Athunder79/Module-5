@@ -1,4 +1,158 @@
 {% extends "dash/base.html" %}
-<body>
-    <h1>Detail!</h1>
-</body>
+{% block content %}
+<div class="container">
+    <h1>Dashboard</h1>
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <!-- Insulin Table -->
+    <div class="table-responsive">
+        <h3>Insulin</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Dose</th>
+                    <th>Type</th>
+                    <th>Note</th>
+                    <th>Date Administered</th>
+                    <th>Time Administered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in insulin %}
+                <tr>
+                    <td>{{ item.dose }}</td>
+                    <td>{{ item.insulin_type }}</td>
+                    <td>{{ item.note }}</td>
+                    <td>{{ item.date_administered }}</td>
+                    <td>{{ item.time_administered }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Glucose Table -->
+    <div class="table-responsive">
+        <h3>Glucose</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Reading</th>
+                    <th>Note</th>
+                    <th>Date Taken</th>
+                    <th>Time Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in glucose %}
+                <tr>
+                    <td>{{ item.reading }}</td>
+                    <td>{{ item.note }}</td>
+                    <td>{{ item.date_taken }}</td>
+                    <td>{{ item.time_taken }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- InsulinChanged Table -->
+    <div class="table-responsive">
+        <h3>Insulin Changes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Insulin Type</th>
+                    <th>Date Changed</th>
+                    <th>Time Changed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in insulin_changed %}
+                <tr>
+                    <td>{{ item.insulin_type }}</td>
+                    <td>{{ item.date_changed }}</td>
+                    <td>{{ item.time_changed }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Meal Table -->
+    <div class="table-responsive">
+        <h3>Meal</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Meal</th>
+                    <th>Total Carbs</th>
+                    <th>Note</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in meal %}
+                <tr>
+                    <td>{{ item.meal }}</td>
+                    <td>{{ item.total_carb_intake }}</td>
+                    <td>{{ item.note }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Reminder Table -->
+    <div class="table-responsive">
+        <h3>Reminders</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Reminder</th>
+                    <th>Date</th>
+                    <th>Date Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in reminder %}
+                <tr>
+                    <td>{{ item.reminder }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.date_due }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Cgm Table -->
+    <div class="table-responsive">
+        <h3>CGM</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sensor</th>
+                    <th>Sensor Life</th>
+                    <th>Date Changed</th>
+                    <th>Time Changed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cgm %}
+                <tr>
+                    <td>{{ item.sensor }}</td>
+                    <td>{{ item.sensor_life }}</td>
+                    <td>{{ item.date_changed }}</td>
+                    <td>{{ item.time_changed }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

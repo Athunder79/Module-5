@@ -21,8 +21,7 @@ def log_event(request):
     return render(request, 'dash/log_event.html')
 
 
-class DashListView(ListView):   
-    template_name = 'dash/home.html'
+class DashListView(LoginRequiredMixin,ListView):   
     context_object_name = 'data_list'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,7 +37,20 @@ class DashListView(ListView):
         # Override the get_queryset method 
         return Insulin.objects.none()
     
+class DashDetailView(DashListView):
+    template_name = 'dash/detail.html'
 
+    def get_queryset(self):
+        # Override the get_queryset method 
+        return Insulin.objects.none()
+    
+class DashHomeView(DashListView):
+    template_name = 'dash/home.html'
+
+    def get_queryset(self):
+        # Override the get_queryset method 
+        return Insulin.objects.none()
+    
 
 class InsulinCreateView(CreateView):
     model = Insulin

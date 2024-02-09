@@ -6,13 +6,15 @@ from .views import (
     InsulinChangedCreateView, 
     MealCreateView, 
     ReminderCreateView,
-    CgmCreateView
+    CgmCreateView,
+    DashDetailView,
+    DashHomeView,
 )
 from . import views
 
 urlpatterns = [
-    path('', DashListView.as_view(), name='dash-home'),
-    path('detail/',views.detail, name='dash-detail'),
+    path('', DashHomeView.as_view(), name='dash-home'),
+    path('detail/',DashDetailView.as_view(), name='dash-detail'),
     path('insulin/new/', InsulinCreateView.as_view(), name='insulin-create'),
     path('glucose/new/', GlucoseCreateView.as_view(), name='glucose-create'),
     path('insulin_changed/new/', InsulinChangedCreateView.as_view(), name='insulin_changed-create'),
