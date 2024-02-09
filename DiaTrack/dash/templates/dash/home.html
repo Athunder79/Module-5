@@ -1,8 +1,8 @@
 {% extends "dash/base.html" %}
 {% block content %}
 <h1>Dashboard</h1>
-{% if user %}
-    <h2>Welcome, {{ user.username }}
+{% if user.is_authenticated %}
+    <h2>Welcome, {{ user.username }}</h2>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 mb-4">
@@ -51,7 +51,13 @@
         </div>
         <div class="col-md-4 mb-4">
             <div class="bg-info text-white p-3 rounded">
-                Content 5
+                <h2>CGM Sensor Change</h2>
+                {% with latest_cgm=cgm|dictsortreversed:"date_changed"|first %}
+                <p>Sensor Type: {{ latest_cgm.sensor }}</p>
+                <p>-</p>
+                <p>Date Changed: {{ latest_cgm.date_changed }}</p>
+                <p>Time Changed: {{ latest_cgm.time_changed }}</p>
+                {% endwith %}
             </div>
         </div>
         <div class="col-md-4 mb-4">

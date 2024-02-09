@@ -5,7 +5,8 @@ from .views import (
     GlucoseCreateView, 
     InsulinChangedCreateView, 
     MealCreateView, 
-    ReminderCreateView
+    ReminderCreateView,
+    CgmCreateView
 )
 from . import views
 
@@ -17,6 +18,9 @@ urlpatterns = [
     path('insulin_changed/new/', InsulinChangedCreateView.as_view(), name='insulin_changed-create'),
     path('meal/new/', MealCreateView.as_view(), name='meal-create'),
     path('reminder/new/', ReminderCreateView.as_view(), name='reminder-create'),
+    path('cgm/new/', CgmCreateView.as_view(), name='cgm-create'),
+    path('log_event/',views.log_event, name='dash-log_event'),
+    
     
    
 ]
