@@ -1,14 +1,13 @@
 {% extends "dash/base.html" %}
 {% block content %}
 <div class="container">
-    <h1>Dashboard</h1>
-   
+    <h1>History</h1>
 
     <!-- Insulin Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="insulin" class="table-responsive">
         <h3>Insulin</h3>
-        <table class="table">
+        <table id="insulin-body" class="table hide">
             <thead>
                 <tr>
                     <th scope="col">Dose</th>
@@ -18,8 +17,8 @@
                     <th scope="col">Time</th>
                 </tr>
             </thead>
-            <tbody>
                 {% for item in insulin %}
+                <tbody>
                 <tr>
                     <td>{{ item.dose }}</td>
                     <td>{{ item.insulin_type }}</td>
@@ -35,9 +34,9 @@
 
     <!-- Glucose Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="glucose" class="table-responsive">
         <h3>Glucose</h3>
-        <table class="table">
+        <table id="glucose-body" class="table hide">
             <thead>
                 <tr>
                     <th scope="col">Reading</th>
@@ -46,13 +45,13 @@
                     <th scope="col">Time Taken</th>
                 </tr>
             </thead>
-            <tbody>
                 {% for item in glucose %}
+                <tbody>
                 <tr>
                     <td>{{ item.reading }}</td>
                     <td>{{ item.note }}</td>
-                    <td>{{ item.date_taken }}</td>
-                    <td>{{ item.time_taken }}</td>
+                    <td>{{ item.date_taken|date:'d-M-Y' }}</td>
+                    <td>{{ item.date_taken|date:'H:i' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -62,9 +61,9 @@
 
     <!-- InsulinChanged Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="insulin-changes" class="table-responsive">
         <h3>Insulin Changes</h3>
-        <table class="table">
+        <table id="insulin-changes-body" class="table hide">
             <thead>
                 <tr>
                     <th scope="col">Insulin Type</th>
@@ -72,12 +71,12 @@
                     <th scope="col">Time Changed</th>
                 </tr>
             </thead>
-            <tbody>
                 {% for item in insulin_changed %}
+                <tbody>
                 <tr>
                     <td>{{ item.insulin_type }}</td>
-                    <td>{{ item.date_changed }}</td>
-                    <td>{{ item.time_changed }}</td>
+                    <td>{{ item.date_changed|date:'d-M-Y' }}</td>
+                    <td>{{ item.date_changed|date:'H:i' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -87,9 +86,9 @@
 
     <!-- Meal Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="meal" class="table-responsive">
         <h3>Meal</h3>
-        <table class="table">
+        <table id="meal-body"  class="table hide">
             <thead>
                 <tr>
                     <th scope="col">Meal</th>
@@ -99,14 +98,14 @@
                     <th scope="col">Time</th>
                 </tr>
             </thead>
-            <tbody>
                 {% for item in meal %}
+                <tbody>
                 <tr>
                     <td>{{ item.meal }}</td>
                     <td>{{ item.total_carb_intake }}</td>
                     <td>{{ item.note }}</td>
-                    <td>{{ item.date }}</td>
-                    <td>{{ item.time }}</td>
+                    <td>{{ item.date|date:'d-M-Y' }}</td>
+                    <td>{{ item.date|date:'H:i' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -116,10 +115,10 @@
 
     <!-- Reminder Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="reminders" class="table-responsive">
         <h3>Reminders</h3>
-        <table class="table">
-            <thead>
+        <table id="reminders-body" class="table hide">
+                <thead>
                 <tr>
                     <th scope="col">Reminder</th>
                     <th scope="col">Date</th>
@@ -130,8 +129,8 @@
                 {% for item in reminder %}
                 <tr>
                     <td>{{ item.reminder }}</td>
-                    <td>{{ item.date }}</td>
-                    <td>{{ item.date_due }}</td>
+                    <td>{{ item.date|date:'d-M-Y' }}</td>
+                    <td>{{ item.date_due|date:'d-M-Y' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -141,9 +140,9 @@
 
     <!-- Cgm Table -->
     <div class="content-section">
-    <div class="table-responsive">
+    <div id="cgm" class="table-responsive">
         <h3>CGM</h3>
-        <table class="table">
+        <table id="cgm-body" class="table hide">
             <thead>
                 <tr>
                     <th scope="col">Sensor</th>
@@ -157,8 +156,8 @@
                 <tr>
                     <td>{{ item.sensor }}</td>
                     <td>{{ item.sensor_life }}</td>
-                    <td>{{ item.date_changed }}</td>
-                    <td>{{ item.time_changed }}</td>
+                    <td>{{ item.date_changed|date:'d-M-Y' }}</td>
+                    <td>{{ item.date_changed|date:'H:i' }}/td>
                 </tr>
                 {% endfor %}
             </tbody>

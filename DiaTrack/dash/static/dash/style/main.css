@@ -43,3 +43,10 @@ body {
     font-weight: bold;
   }
   
+  .hide{
+    display: none;
+  }
+
+  #cgm, #insulin, #glucose, #meal, #reminders, #insulin-changes {
+    cursor: pointer;
+  }
