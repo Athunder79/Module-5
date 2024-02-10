@@ -22,7 +22,7 @@ def detail(request):
 def log_event(request):
     return render(request, 'dash/log_event.html')
 
-
+# merged view for all the models
 class DashListView(LoginRequiredMixin,ListView):   
     context_object_name = 'data_list'
     def get_context_data(self, **kwargs):
@@ -34,6 +34,7 @@ class DashListView(LoginRequiredMixin,ListView):
         context['reminder'] = Reminder.objects.filter(user=self.request.user)
         context['cgm'] = Cgm.objects.filter(user=self.request.user)
 
+        # calculate the remaining days and hours for the insulin and cgm
         for cgm in context['cgm']:
             time_passed = timezone.now() - cgm.date_changed
             print (time_passed)
