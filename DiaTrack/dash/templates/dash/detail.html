@@ -2,19 +2,20 @@
 {% block content %}
 <div class="container">
     <h1>Dashboard</h1>
-    <h2>Welcome, {{ user.username }}</h2>
+   
 
     <!-- Insulin Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>Insulin</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Dose</th>
-                    <th>Type</th>
-                    <th>Note</th>
-                    <th>Date Administered</th>
-                    <th>Time Administered</th>
+                    <th scope="col">Dose</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,24 +24,26 @@
                     <td>{{ item.dose }}</td>
                     <td>{{ item.insulin_type }}</td>
                     <td>{{ item.note }}</td>
-                    <td>{{ item.date_administered }}</td>
-                    <td>{{ item.time_administered }}</td>
+                    <td>{{ item.date_administered|date:'d-M-Y' }}</td>
+                    <td>{{ item.date_administered|date:'H:i' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    </div>
 
     <!-- Glucose Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>Glucose</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Reading</th>
-                    <th>Note</th>
-                    <th>Date Taken</th>
-                    <th>Time Taken</th>
+                    <th scope="col">Reading</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Date Taken</th>
+                    <th scope="col">Time Taken</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,16 +58,18 @@
             </tbody>
         </table>
     </div>
+    </div>
 
     <!-- InsulinChanged Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>Insulin Changes</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Insulin Type</th>
-                    <th>Date Changed</th>
-                    <th>Time Changed</th>
+                    <th scope="col">Insulin Type</th>
+                    <th scope="col">Date Changed</th>
+                    <th scope="col">Time Changed</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,18 +83,20 @@
             </tbody>
         </table>
     </div>
+    </div>
 
     <!-- Meal Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>Meal</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Meal</th>
-                    <th>Total Carbs</th>
-                    <th>Note</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th scope="col">Meal</th>
+                    <th scope="col">Total Carbs</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -105,16 +112,18 @@
             </tbody>
         </table>
     </div>
+    </div>
 
     <!-- Reminder Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>Reminders</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Reminder</th>
-                    <th>Date</th>
-                    <th>Date Due</th>
+                    <th scope="col">Reminder</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Date Due</th>
                 </tr>
             </thead>
             <tbody>
@@ -128,17 +137,19 @@
             </tbody>
         </table>
     </div>
+    </div>
 
     <!-- Cgm Table -->
+    <div class="content-section">
     <div class="table-responsive">
         <h3>CGM</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sensor</th>
-                    <th>Sensor Life</th>
-                    <th>Date Changed</th>
-                    <th>Time Changed</th>
+                    <th scope="col">Sensor</th>
+                    <th scope="col">Sensor Life</th>
+                    <th scope="col">Date Changed</th>
+                    <th scope="col">Time Changed</th>
                 </tr>
             </thead>
             <tbody>
@@ -152,6 +163,7 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
 
 </div>

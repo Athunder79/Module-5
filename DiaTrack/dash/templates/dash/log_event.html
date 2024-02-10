@@ -1,40 +1,43 @@
 {% extends "dash/base.html" %}
 {% block content %}
+<div class="content-section">
 <h1>Choose an event to add</h1>
 {% if user.is_authenticated %}
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 mb-4">
-            <div class="bg-primary text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'insulin-create' %}">Insulin</a></h2>
+            <div class="bg-primary p-3 rounded">
+                <h3><a class="text-light" href="{% url 'insulin-create' %}">Insulin</a></h3>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="bg-success text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'glucose-create' %}">Glucose Reading</a></h2>
+            <div class="bg-success p-3 rounded">
+                <h3><a class="text-light" href="{% url 'glucose-create' %}">Glucose Reading</a></h3>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="bg-warning text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'insulin_changed-create' %}">Insulin Changes</a></h2>
+            <div class="bg-warning p-3 rounded">
+                <h3><a class="text-light" href="{% url 'insulin_changed-create' %}">Insulin Changes</a></h3>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="bg-danger text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'meal-create' %}">Food</a></h2>
+            <div class="bg-danger p-3 rounded">
+                <h3><a class="text-light" href="{% url 'meal-create' %}">Food</a></h3>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="bg-info text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'cgm-create' %}">CGM Sensor Change</a></h2>
+            <div class="bg-info  p-3 rounded">
+                <h3><a class="text-light" href="{% url 'cgm-create' %}">CGM Sensor Change</a></h3>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="bg-secondary text-white p-3 rounded">
-                <h2><a class="text-dark" href="{% url 'reminder-create' %}">Reminders</a></h2>
+                <h3><a class="text-light" href="{% url 'reminder-create' %}">Reminders</a></h3>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endif %}
 {% endblock %}

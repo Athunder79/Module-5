@@ -1,11 +1,12 @@
 {% extends "dash/base.html" %}
 {% block content %}
+<div class="content-section">
 <h1>Dashboard Last Logged</h1>
 {% if user.is_authenticated %}
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="bg-primary text-white p-3 rounded">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="bg-primary text-white p-3 rounded d-flex flex-column h-100">
                 <h2>Insulin</h2>
                 {% with latest_insulin=insulin|dictsortreversed:"date_administered"|first %}
                 <p><strong>Dose:</strong>&nbsp; {{ latest_insulin.dose }} units of {{ latest_insulin.insulin_type }}</p>
@@ -15,8 +16,8 @@
                 {% endwith %}
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="bg-success text-white p-3 rounded">
+        <div class="col">
+            <div class="bg-success text-white p-3 rounded d-flex flex-column h-100">
                 <h2>Glucose Reading</h2>
                 {% with latest_glucose=glucose|dictsortreversed:"date_taken"|first %}
                 <p><strong>Reading:</strong>&nbsp; {{ latest_glucose.reading }} mmol/L</p>
@@ -26,19 +27,19 @@
                 {% endwith %}
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="bg-warning text-white p-3 rounded">
+        <div class="col">
+            <div class="bg-warning text-white p-3 rounded d-flex flex-column h-100">
                 <h2>Insulin Change</h2>
                 {% with latest_insulin_changed=insulin_changed|dictsortreversed:"date_changed"|first %}
                 <p><strong>Insulin Type:</strong>&nbsp;  {{ latest_insulin_changed.insulin_type }}</p>
-                <p>-</p>
                 <p><strong>Date changed:</strong>&nbsp; {{ latest_insulin_changed.date_changed|date:'d-M-Y' }}</p>
-                <p>-</p>
+                <p></p>
+                <p class="text-danger"><strong>Expires in: {{ latest_insulin_changed.remaining_days }} days, {{ latest_insulin_changed.remaining_time }} hrs</strong></p>
                 {% endwith %}
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="bg-danger text-white p-3 rounded">
+        <div class="col">
+            <div class="bg-danger text-white p-3 rounded d-flex flex-column h-100">
                 <h2>Food</h2>
                 {% with latest_meal=meal|dictsortreversed:"date"|first %}
                 <p><strong>Meal:</strong>&nbsp; {{ latest_meal.meal }}</p>
@@ -48,19 +49,19 @@
                 {% endwith %}
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="bg-info text-white p-3 rounded">
+        <div class="col">
+            <div class="bg-info text-white p-3 rounded d-flex flex-column h-100">
                 <h2>CGM Sensor Change</h2>
                 {% with latest_cgm=cgm|dictsortreversed:"date_changed"|first %}
                 <p><strong>Sensor Type:</strong>&nbsp; {{ latest_cgm.sensor }}</p>
-                <p>-</p>
                 <p><strong>Date Changed:</strong>&nbsp; {{ latest_cgm.date_changed|date:'d-M-Y' }}</p>
                 <p><strong>Time Changed:</strong>&nbsp; {{ latest_cgm.date_changed|date:'H:i' }}</p>
+                <p class="text-danger"><strong>Expires in: {{ latest_cgm.remaining_days }} days, {{ latest_cgm.remaining_time }} hrs</strong></p>
                 {% endwith %}
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="bg-secondary text-white p-3 rounded">
+        <div class="col">
+            <div class="bg-secondary text-white p-3 rounded d-flex flex-column h-100">
                 <h2>Reminders</h2>
                 {% for last_reminder in reminder|dictsort:"date_due"|slice:":3" %}
                 <p><strong>Reminder:</strong>&nbsp; {{ last_reminder.reminder }}<br>
@@ -70,9 +71,9 @@
         </div>
     </div>
 </div>
+</div>
 {% else %}
     <h2>Welcome, new user!</h2>
     <p><a href="{% url 'login' %}">Log in</a> to access your dashboard.</p>
 {% endif %}
 {% endblock %}
-

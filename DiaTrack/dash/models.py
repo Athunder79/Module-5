@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from datetime import timedelta
+
 User = get_user_model()
 
 class Insulin(models.Model):
@@ -87,3 +89,5 @@ class Cgm(models.Model):
 
     def get_absolute_url(self): 
         return reverse('dash-home')
+    
+ 

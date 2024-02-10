@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import timedelta
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Insulin, Glucose, InsulinChanged, Meal, Reminder, Cgm
@@ -31,11 +33,36 @@ class DashListView(LoginRequiredMixin,ListView):
         context['meal'] = Meal.objects.filter(user=self.request.user)
         context['reminder'] = Reminder.objects.filter(user=self.request.user)
         context['cgm'] = Cgm.objects.filter(user=self.request.user)
-        return context
+
+        for cgm in context['cgm']:
+            time_passed = timezone.now() - cgm.date_changed
+            print (time_passed)
+            total_seconds = time_passed.total_seconds()
+            print(total_seconds)
+            days_left = cgm.sensor_life_in_days - (total_seconds // 86400)
+            print(days_left)
+            hours_left = (total_seconds % 86400) // 3600
+            print(hours_left)
+            cgm.remaining_days = int(days_left)
+            cgm.remaining_time = int(hours_left)
+
+            
+        for insulin_changed in context['insulin_changed']:
+            time_passed = timezone.now() - insulin_changed.date_changed
+            total_seconds = time_passed.total_seconds()
+            days_left = 28 - (total_seconds // 86400)
+            hours_left = (total_seconds % 86400) // 3600
+            insulin_changed.remaining_days = int(days_left)
+            insulin_changed.remaining_time = int(hours_left)
+            
+        return context        
+       
         
     def get_queryset(self):
         # Override the get_queryset method 
         return Insulin.objects.none()
+    
+    
     
 class DashDetailView(DashListView):
     template_name = 'dash/detail.html'
