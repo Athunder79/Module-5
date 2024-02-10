@@ -6,7 +6,7 @@
     <!-- Insulin Table -->
     <div class="content-section">
     <div id="insulin" class="table-responsive">
-        <h3>Insulin</h3>
+        <h3>Insulin <span class="navbar-toggler-icon "></span></h3>
         <table id="insulin-body" class="table hide">
             <thead>
                 <tr>
@@ -157,7 +157,7 @@
                     <td>{{ item.sensor }}</td>
                     <td>{{ item.sensor_life }}</td>
                     <td>{{ item.date_changed|date:'d-M-Y' }}</td>
-                    <td>{{ item.date_changed|date:'H:i' }}/td>
+                    <td>{{ item.date_changed|date:'H:i' }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

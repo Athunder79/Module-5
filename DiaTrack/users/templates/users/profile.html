@@ -5,24 +5,24 @@
         <div class="media-body">
             <h2 class="account-heading">{{ user.username }}</h2>
             <p class="text-secondary">{{ user.first_name }} {{ user.last_name }}</p>
-            <p class="text-secondary">{{ user.email }}</p>
-            <p class="text-secondary">{{ user.date_joined|date:"F d, Y" }}</p>
-            <p class="text-secondary">{{ user.last_login|date:"g:i a" }}</p>
-            <p class="text-secondary">{{ user.profile.address1 }}</p>
-            <p class="text-secondary">{{ user.profile.address2 }}</p>
-            <p class="text-secondary">{{ user.profile.city }}</p>
-            <p class="text-secondary">{{ user.profile.country }}</p>
+            <p class="text-secondary"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="text-secondary"><strong>Date Joined:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
+            <p class="text-secondary"><strong>Last Login:</strong> {{ user.last_login|date:"g:i a" }}</p>
+            <p class="text-secondary"><strong>Address Line 1:</strong> {{ user.profile.address1 }}</p>
+            <p class="text-secondary"><strong>Address Line 2:</strong> {{ user.profile.address2 }}</p>
+            <p class="text-secondary"><strong>City:</strong> {{ user.profile.city }}</p>
+            <p class="text-secondary"><strong>Country:</strong> {{ user.profile.country }}</p>
 
         </div>
         <form method="POST">
             {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Profile Info</legend> <!-- Updated ledgend to display Profile Info -->
-            {{ u_form|crispy }} <!-- Updated to load the user form and let crispy take care of the formating -->
-            {{ p_form|crispy }} <!-- Updated to load the profile form and let crispy take care of the formating -->
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Update</button> <!-- Updated button to display Profile Info -->
+            <button class="btn btn-outline-info" type="submit">Update</button>
         </div>
     </form>
 </div>
