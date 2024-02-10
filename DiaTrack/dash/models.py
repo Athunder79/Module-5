@@ -79,8 +79,8 @@ class Reminder(models.Model):
 
 class Cgm(models.Model):
     id = models.AutoField(primary_key=True)
-    sensor = models.TextField(null=True, blank=True)
-    sensor_life_in_days = models.IntegerField(null=False, blank=True)
+    sensor = models.TextField(null=False, blank=False)
+    sensor_life_in_days = models.IntegerField(null=False, blank=False)
     date_changed = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
